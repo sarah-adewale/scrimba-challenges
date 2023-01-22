@@ -131,3 +131,166 @@ console.log(obj.move(1, 1, 2)); // -1
 console.log(obj.move(2, 0, 1)); // -1
 console.log(obj.move(1, 0, 2)); // -1
 console.log(obj.move(2, 1, 1)); // 1
+
+
+function ticTacToe(n) {
+  let grid = new Array(n).fill(null).map(() => new Array(n).fill(0));
+
+  function move(row, col, player) {
+    if (grid[row][col] !== 0) {
+      // Invalid move, block already occupied
+      return -1;
+    }
+
+    // Place the player's mark
+    grid[row][col] = player;
+
+    // Check for win
+    if (checkWin(player)) {
+      return player;
+    }
+
+    // Check if the board is full
+    if (isBoardFull()) {
+      // Draw, no more moves available
+      return 0;
+    }
+
+    // Game ongoing, return -1
+    return -1;
+  }
+
+  function checkWin(player) {
+    const n = grid.length;
+
+    // Check rows
+    for (let row = 0; row < n; row++) {
+      let win = true;
+      for (let col = 0; col < n; col++) {
+        if (grid[row][col] !== player) {
+          win = false;
+          break;
+        }
+      }
+      if (win) return true;
+    }
+
+    // Check columns
+    for (let col = 0; col < n; col++) {
+      let win = true;
+      for (let row = 0; row < n; row++) {
+        if (grid[row][col] !== player) {
+          win = false;
+          break;
+        }
+      }
+      if (win) return true;
+    }
+
+    // Check diagonals
+    let win = true;
+    for (let i = 0; i < n; i++) {
+      if (grid[i][i] !== player) {
+        win = false;
+        break;
+      }
+    }
+    if (win) return true;
+
+    // antiDiagonal
+    win = true;
+    for (let i = 0; i < n; i++) {
+      if (grid[i][n - 1 - i] !== player) {
+        win = false;
+        break;
+      }
+    }
+    if (win) return true;
+
+    return false;
+  }
+
+  function isBoardFull() {
+    const n = grid.length;
+    for (let row = 0; row < n; row++) {
+      for (let col = 0; col < n; col++) {
+        if (grid[row][col] === 0) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  return {
+    move
+  };
+}
+
+// Usage:
+const game = ticTacToe(3);
+console.log(game.move(0, 0, 1));
+console.log(game.move(0, 0, 0));
+console.log(game.move(0, 0, 1)); // 0
+console.log(game.move(0, 2, 2)); // 0
+console.log(game.move(2, 2, 1)); // 0
+console.log(game.move(1, 1, 2)); // 0
+console.log(game.move(2, 0, 1)); // 0
+console.log(game.move(1, 0, 2)); // 0
+console.log(game.move(2, 1, 1)); // 1
+
+function ticTacToe(n) {
+  let rows = new Array(n).fill(0);
+  let cols = new Array(n).fill(0);
+  let diagonal = 0;
+  let anti = 0;
+
+  function move(row, col, player) {
+    const add = player === 1 ? 1 : -1;
+    rows[row] += add;
+    cols[col] += add;
+
+    if (row === col) {
+      diagonal += add;
+    }
+    if (col === cols.length - row - 1) {
+      anti += add;
+    }
+
+    if (
+      rows[row] === n ||
+      cols[col] === n ||
+      diagonal === n ||
+      anti === n
+    ) {
+      return 'player 1 won';
+    }
+
+    if (
+      rows[row] === -n ||
+      cols[col] === -n ||
+      diagonal === -n ||
+      anti === -n
+    ) {
+      return 'player 2 won';
+    }
+
+    return 'Draw';
+  }
+
+  return {
+    move
+  };
+}
+
+// Usage:
+const game = ticTacToe(3);
+
+
+console.log(game.move(0, 0, 1)); // 0
+console.log(game.move(0, 2, 2)); // 0
+console.log(game.move(2, 2, 1)); // 0
+console.log(game.move(1, 1, 2)); // 0
+console.log(game.move(2, 0, 1)); // 0
+console.log(game.move(1, 0, 2)); // 0
+console.log(game.move(2, 1, 1)); // 1

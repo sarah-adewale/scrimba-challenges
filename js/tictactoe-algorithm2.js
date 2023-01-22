@@ -6,7 +6,9 @@
 // The game ends when there are three of the same (non-empty) character filling any row, column, or diagonal.
 // The game also ends if all squares are non-empty.
 // No more moves can be played if the game is over.
-// Given a 2D integer array moves where moves[i] = [rowi, coli] indicates that the ith move will be played on grid[rowi][coli]. return the winner of the game if it exists (A or B). In case the game ends in a draw return "Draw". If there are still movements to play return "Pending".
+// Given a 2D integer array moves where moves[i] = [rowi, coli] indicates that the ith move will be played on grid[rowi][coli]. 
+// return the winner of the game if it exists (A or B). In case the game ends in a draw return "Draw". If there are still 
+// movements to play return "Pending".
 
 // You can assume that moves is valid (i.e., it follows the rules of Tic-Tac-Toe), the grid is initially empty, and A will play first.
 
@@ -39,56 +41,41 @@
 // There are no repeated elements on moves.
 // moves follow the rules of tic tac toe.
 
-var tictactoe = function(moves) {
-  const board = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']];
-  const playerA = [];
-  const playerB = [];
+const tictactoe = (moves) => {
+  const grid = [['', '', ''], ['', '', ''], ['', '', '']];
 
-  for (let i = 0; i < moves.length; i++) {
-    const [row, col] = moves[i];
-    const currentPlayer = i % 2 === 0 ? playerA : playerB;
-    currentPlayer.push([row, col]);
-    board[row][col] = i % 2 === 0 ? 'A' : 'B';
+  let currentPlayer = 'A';
 
-    const result = checkWin(currentPlayer);
-    if (result === 'A' || result === 'B') {
-      return result;
-    }
-  }
+  for (const move of moves) {
+    const [row, col] = move;
+    grid[row][col] = currentPlayer;
 
-  if (moves.length === 9) {
-    return 'Draw';
-  } else {
-    return 'Pending';
-  }
-
-  function checkWin(movesArray) {
-    const winningCombinations = [
-      [[0, 0], [0, 1], [0, 2]], // top row
-      [[1, 0], [1, 1], [1, 2]], // middle row
-      [[2, 0], [2, 1], [2, 2]], // bottom row
-      [[0, 0], [1, 0], [2, 0]], // left column
-      [[0, 1], [1, 1], [2, 1]], // middle column
-      [[0, 2], [1, 2], [2, 2]], // right column
-      [[0, 0], [1, 1], [2, 2]], // diagonal top-left to bottom-right
-      [[0, 2], [1, 1], [2, 0]] // diagonal top-right to bottom-left
-    ];
-
-    for (const combination of winningCombinations) {
-      let count = 0;
-      for (const move of combination) {
-        if (movesArray.some(([row, col]) => row === move[0] && col === move[1])) {
-          count++;
-        }
-      }
-      if (count === 3) {
-        return movesArray === playerA ? 'A' : 'B';
-      }
+    if (checkWin(grid, row, col, currentPlayer)) {
+      return currentPlayer;
     }
 
-    return null;
+    currentPlayer = currentPlayer === 'A' ? 'B' : 'A';
   }
+
+  return moves.length === 9 ? 'Draw' : 'Pending';
 };
+
+const checkWin = (grid, row, col, player) => {
+  const rowStr = grid[row].join('');
+  const colStr = grid.map((row) => row[col]).join('');
+  const diagonalStr1 = grid.map((row, i) => row[i]).join('');
+  const diagonalStr2 = grid.map((row, i) => row[2 - i]).join('');
+
+  const winStr = player.repeat(3);
+
+  return (
+    rowStr === winStr ||
+    colStr === winStr ||
+    diagonalStr1 === winStr ||
+    diagonalStr2 === winStr
+  );
+};
+
 
 
 console.log(tictactoe([[0,0],[2,0],[1,1],[2,1],[2,2]])); // Output: "A"

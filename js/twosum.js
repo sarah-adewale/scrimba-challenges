@@ -25,18 +25,6 @@
 // }
 
 function twoSum(num, sum){
-  // let result = []
-  // let cache = {}
-
-  // for(const num1 of num){
-  //   let num2 = sum - num
-
-  //   if(!cache[num2]){
-  //     cache[num1] = true
-
-  //   }
-  //   result.push([num1, num2])
-  // }
 
   let returnedArray = []
   

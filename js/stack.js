@@ -42,3 +42,14 @@ const input = "abcde";
 const reversed = reverseString(input);
 console.log(reversed); // Output: "edcba"
 
+function reverse(string) {
+  const stack = new Stack();
+  for (let i = 0; i < string.length; i++) {
+    stack.push(string.charAt(i));
+  }
+  let newString = "";
+  while (stack.read()) {
+    newString += stack.pop();
+  }
+  return newString;
+}
