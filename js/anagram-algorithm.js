@@ -31,7 +31,7 @@ function anagram(strA, strB){
         // create a loop for each char of stringa
         for(let char in strAmap){
              // compare each char in stringa to each character in stringb, if they are not equal, return false
-            
+
             if(strAmap[char] !== strBmap[char]){
                 return false
             }
@@ -42,7 +42,6 @@ function anagram(strA, strB){
     }else{
         return false
     }
-    
 }
 
 console.log(anagram('listen', 'silent'))
