@@ -9,13 +9,12 @@ function palindromeChecker(text){
     let textLen = text.length
     
     for(let i = 0; i < textLen; i++){
+        //if each string is in the same position in reverse
         if(text[i] !== text[textLen - 1 - i]){
             return false
         }
     }
     return true
-
-
 
 }
 
