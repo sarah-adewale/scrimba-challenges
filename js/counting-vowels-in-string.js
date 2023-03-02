@@ -20,4 +20,16 @@ function vowelsCounter(string){
     return result
 }
 
+//using regular expressions
+
+function vowelsCounter(string){
+    //search text with regex
+    let matchingInstances = string.match(/[aeiou]/gi)
+    if(matchingInstances){
+        return matchingInstances.length
+    }else{
+        return 0
+    }
+}
+
 console.log(vowelsCounter('anehizxcv'))
