@@ -46,8 +46,15 @@ const shoppingCart = [
 ]
 
 function totalSavory(arr){
-    let savory = arr.filter(item => item.type === 'savory')
-    return savory.reduce((acc, c) => acc + c.price, 0)
+    // let savory = arr.filter(item => item.type === 'savory')
+    // return savory.reduce((acc, c) => acc + c.price, 0)
+
+    return arr.reduce((acc, c) => {
+        if(c.type === 'savory'){
+            acc += c.price
+        }
+        return acc
+    }, 0)
 }
 
 console.log(totalSavory(shoppingCart));
