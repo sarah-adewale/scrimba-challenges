@@ -146,14 +146,12 @@ function transformData(data){
     //         birthday: birthday.toDateString()
     //     }
     // })
-// with destructuring
+
+// shorter with destructuring
 return data.map(({name, dob}) => {
-    const fullName = `${name.first} ${name.last}`
-    const formattedDate = new Date(dob.date).toDateString()
-    console.log(fullName, formattedDate)
     return {
-        fullName: fullName,
-        birthday: formattedDate
+        fullName: `${name.first} ${name.last}`,
+        birthday: new Date(dob.date).toDateString()
     }
 })
         
