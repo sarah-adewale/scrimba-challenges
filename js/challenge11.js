@@ -18,7 +18,8 @@ function countChars(str){
     // convert to lowerCase() and remove space using split and join
     let  newStr = str.toLowerCase().split(' ').join("")
     // create empty object to hold the string and value
-    let cache = {}
+    // peggyporth
+    let cache = {'p':'2', 'e': '1', 'g': '2', 'y': '1', 'o': '1', 'r': '1', 't': '1', 'h': '1'}
     // loop thru the string,  
     for(let char of newStr){
         // if the char isnt present in the cache object, add it and give it a value of 1 
