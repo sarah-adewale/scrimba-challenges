@@ -41,6 +41,7 @@ function removeDupesFromArray(arr){
 
     // initialize an empty array
     let receipes = []
+    // initialize an empty object
     let breadcrumbs = {}
     // loop thru the input array
     for(let i = 0; i < arr.length; i++){
