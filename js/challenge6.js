@@ -38,13 +38,27 @@ Example output: "elephant"
 
 function emojifyWord(word){
     // check if the input starts with and ends with a colon
-    let newWord = word.toLowerCase().startsWith(':') && word.endsWith(':') ? word.slice(1,-1) : word
+    //if no: return eord
+    if(!word.startsWith(':') && !word.endsWith(':')) return word
     
-    if(emojis[newWord]){
-        return emojis[newWord]
+    
+    const slice = word.slice(1, -1)
+    // console.log(slice)
+    // if yes
+    if(emojis[slice]){
+        return emojis[slice]
     }else{
-        return newWord
+        return slice
     }
+    // if no: return the word
+    
+    // let newWord = word.toLowerCase().startsWith(':') && word.endsWith(':') ? word.slice(1,-1) : word
+    
+    // if(emojis[newWord]){
+    //     return emojis[newWord]
+    // }else{
+    //     return newWord
+    // }
     // return 
 }
 
@@ -73,4 +87,4 @@ console.log(emojifyWord(":flower:"));
 console.log(emojifyWord("elephant"));
 
 console.log(emojifyPhrase("I :heart: my :cat:"));
-// console.log(emojifyPhrase("I :heart: my :elephant:"));
+console.log(emojifyPhrase("I :heart: my :elephant:"));
