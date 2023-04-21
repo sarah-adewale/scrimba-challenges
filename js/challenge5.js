@@ -20,15 +20,15 @@ Your function's output should look something like this:
  */
 
 function awardBonuses(num){
-    for(let i = 1; i < num; i++){
+    for(let i = 1; i <= num; i++){
         if(i % 3 === 0 && 1 & 5 === 0){
-            console.log(i + ' JACKPOT! 1 Million and a Yacht!')
+            console.log(i + ' - JACKPOT! 1 Million and a Yacht!')
         }else if(i % 5 === 0){
-            console.log(i + ' $100,000 bonus!') 
+            console.log(i + ' - $100,000 bonus!') 
         }else if(i % 3 === 0){
-            console.log(i + ' Vacation!')
+            console.log(i + ' - Vacation!')
         }else{
-            console.log(i + ' :(')
+            console.log(i + ' - :(')
         }
     }
 }
