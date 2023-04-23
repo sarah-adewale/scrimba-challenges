@@ -18,13 +18,14 @@ function whisper(str){
     // copy the str in another variable
     let newStr = str
     // coerce str toLowerCase()
-    return `shh... ${newStr.split('!').join('').toLowerCase()}`
+    // return `shh... ${newStr.split('!').join('').toLowerCase()}`
+    return newStr.endsWith('!') ? "shh... " + newStr.slice(0, -1).toLowerCase() : "shh... " + newStr.toLowerCase()
 
 }
 
 
 // return the coerced str with shh at the beginning 
 
-console.log(whisper("PLEASE STOP SHOUTING."));
-console.log(whisper("MA'AM, this is a Wendy's!"));
-console.log(whisper("MA'AM, this is a Wendy's!"));
+console.log(whisper("PLEASE! STOP! SHOUTING."));
+console.log(whisper("MA'AM!, this is a Wendy's!"));
+console.log(whisper("The KITTENS are SLEEPING!"));
