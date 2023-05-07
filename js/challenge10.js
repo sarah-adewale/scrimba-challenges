@@ -22,6 +22,7 @@ function removeDupeChars(chars){
             newPassword += chars[i]
             cache[chars[i]] = true
         }
+        // console.log()
     }
     return newPassword
     
