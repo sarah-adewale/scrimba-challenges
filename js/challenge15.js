@@ -14,7 +14,12 @@ Example output: 6
 const studentCount = [50,53,61,67,60,70,78,80,80,81,90,110];
 
 function sumArray(arr){
-    return arr.reduce((acc, curr) => acc + curr, 0)
+    // return arr.reduce((acc, curr) => acc + curr, 0)
+    let sum = 0
+    for(let i = 0; i < arr.length; i++){
+        sum += arr[i]
+    }
+    return sum
 }
 
 console.log(sumArray(studentCount));
