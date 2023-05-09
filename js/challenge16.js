@@ -24,25 +24,25 @@ const gameNightFood = {
     "🍝 pasta": 5
 }
 
-// function findTheWinner(obj){
-//     //create a varibale to hold the maximum value
-//     let highestVotes = 0
-//     let winningFood = ''
-//     for(const food in obj){
-//         if(obj[food] > highestVotes){
-//             highestVotes = obj[food]
-//             // in the first iteration highestVotes 3 (the value of the first char in the obj is greater than highest vote)
-//             winningFood += food
-//             // in the first iteration winningFood is pizza
-//         }
-//         // 
-//     }
-//     console.log(highestVotes)
-//     return `The winner is ${winningFood} with ${highestVotes} votes`
-//     // highestVote is 10, winningFood is tacos
+function findTheWinner(obj){
+    //create a varibale to hold the maximum value
+    let highestVotes = 0
+    let winningFood = ''
+    for(const food in obj){
+        if(obj[food] > highestVotes){
+            highestVotes = obj[food]
+            // in the first iteration highestVotes 3 (the value of the first char in the obj is greater than highest vote)
+            winningFood += food
+            // in the first iteration winningFood is pizza
+        }
+        // 
+    }
+    console.log(highestVotes)
+    return `The winner is ${winningFood} with ${highestVotes} votes`
+    // highestVote is 10, winningFood is tacos
     
 
-// }
+}
 
 
 
