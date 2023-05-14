@@ -37,18 +37,22 @@
 // }
 
 function rot13(message){
-   
-    // create a map of the alphabeth and cipher
     const alphabet = 'abcdefghijklmnopqrstuvwxyz';
     const cipher = 'nopqrstuvwxyzabcdefghijklm';
-
     const map = new Map()
 
     for(let i = 0; i < alphabet.length; i++){
-        
-        map.set(alphabet[i].toUpperCase(), cipher[i].toUpperCase())
-
+        map.set(alphabet[i], cipher[i])
+        map.set(alphabet[i].toLowerCase(), cipher[i].toLowerCase())
     }
-    return map
+    let result = ''
+    for(let char of message){
+        if(map.has(char)){
+            char = map.get(char)
+        }
+        result += char
+    }
+    return result
 }
-console.log(rot13('word'), 'jbeq')
+
+console.log(rot13('word'), 'jbeg,')
