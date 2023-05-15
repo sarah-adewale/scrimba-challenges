@@ -5,57 +5,50 @@
 // included in the string, they should be returned as they are. Only letters from the latin/english alphabet should be shifted, 
 // like in the original Rot13 "implementation".
 
-function rot13(message) {
-  let result = "";
+
+
+// function rot13(message) {
+//   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+//   const cipher = 'nopqrstuvwxyzabcdefghijklm';
+//   const map = new Map();
   
-  for (let i = 0; i < message.length; i++) {
-    let char = message[i];
-    let code = message.charCodeAt(i);
+//   // Create a mapping of each letter to its ROT13 counterpart
+//   for (let i = 0; i < alphabet.length; i++) {
+//     map.set(alphabet[i], cipher[i]);
+//     map.set(alphabet[i].toUpperCase(), cipher[i].toUpperCase());
+//   }
+  
+//   let result = "";
+  
+//   // Iterate over each character in the message
+//   for (let i = 0; i < message.length; i++) {
+//     let char = message[i];
     
-    // Check if character is a letter
-    if (/[a-zA-Z]/.test(char)) {
-      // Shift the letter by 13 positions
-      if (code >= 65 && code <= 90) {
-        code = ((code - 65 + 13) % 26) + 65;
-      } else if (code >= 97 && code <= 122) {
-        code = ((code - 97 + 13) % 26) + 97;
-      }
-      char = String.fromCharCode(code);
+//     // Check if the character is in the map
+//     if (map.has(char)) {
+//       // Replace the character with its ROT13 counterpart
+//       char = map.get(char);
+//     }
+    
+//     result += char;
+//   }
+  
+//   return result;
+// }
+
+function rot13(message){
+   
+    // create a map of the alphabeth and cipher
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    const cipher = 'nopqrstuvwxyzabcdefghijklm';
+
+    const map = new Map()
+
+    for(let i = 0; i < alphabet.length; i++){
+        
+        map.set(alphabet[i].toUpperCase(), cipher[i].toUpperCase())
+
     }
-    
-    result += char;
-  }
-  
-  return result;
+    return map
 }
-
-
-function rot13(message) {
-  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
-  const cipher = 'nopqrstuvwxyzabcdefghijklm';
-  const map = new Map();
-  
-  // Create a mapping of each letter to its ROT13 counterpart
-  for (let i = 0; i < alphabet.length; i++) {
-    map.set(alphabet[i], cipher[i]);
-    map.set(alphabet[i].toUpperCase(), cipher[i].toUpperCase());
-  }
-  
-  let result = "";
-  
-  // Iterate over each character in the message
-  for (let i = 0; i < message.length; i++) {
-    let char = message[i];
-    
-    // Check if the character is in the map
-    if (map.has(char)) {
-      // Replace the character with its ROT13 counterpart
-      char = map.get(char);
-    }
-    
-    result += char;
-  }
-  
-  return result;
-}
-
+console.log(rot13('word'), 'jbeq')
