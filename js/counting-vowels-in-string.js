@@ -24,7 +24,8 @@ function vowelsCounter(string){
 
 function vowelsCounter(string){
     //search text with regex
-    let matchingInstances = string.match(/[aeiou]/gi)
+    let matchingInstances = string.match(/[aeiou]/gi) //.match() returns an array of the matches found after comparing the regualar expression
+    //passed in as an argument with the text
     if(matchingInstances){
         return matchingInstances.length
     }else{
