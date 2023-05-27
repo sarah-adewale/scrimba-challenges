@@ -16,16 +16,21 @@
 //     return result
 // }
 
-function longestWord(str){
-    let newStr = str.split(' ')
-    let result = newStr.reduce((maxLengthWord, currentWord) => {
-        if(currentWord.length > maxLengthWord.length){
-            return currentWord
-        }else{
-            return maxLengthWord
-        }
-    }, '')
-    return result
-}
+// function longestWord(str){
+//     let newStr = str.split(' ')
+//     let result = newStr.reduce((maxLengthWord, currentWord) => {
+//         if(currentWord.length > maxLengthWord.length){
+//             return currentWord
+//         }else{
+//             return maxLengthWord
+//         }
+//     }, '')
+//     return result
+// }
 
+function longestWord(str){
+     let stringArray = str.split(' ')
+     let result = stringArray.sort((wordA, wordB) => wordB.length - wordA.length) //sort from higest to lowest
+     return result[0]
+}
 console.log(longestWord('Top Shelf Web Development Training on Stoch'))
