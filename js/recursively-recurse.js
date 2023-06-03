@@ -1,17 +1,17 @@
 //the following function prints every number from a low number to a high number. for example, if low is 0 and high is 10
 
-function printEveryOther(high, low){
-    //base case
-    if(low > high){
-       return low
-    }else{
-        return printEveryOther(low + 2, high)
-    }
+// function printEveryOther(high, low){
+//     //base case
+//     if(low > high){
+//        return low
+//     }else{
+//         return printEveryOther(low + 2, high)
+//     }
 
    
-}
+// }
 
-console.log(printEveryOther(10, 0))
+// console.log(printEveryOther(10, 0))
 
 // here is an array containing both numbers as well as other arrays, which in turn contain numbers and arrays:
 
@@ -23,13 +23,14 @@ console.log(printEveryOther(10, 0))
 // Write a recursive function that prints all the numbers (and just numbers).
 
 // function printItems(arr){
-//     arr.forEach(element => {
-//         if(Array.isArray(element)){
-//             printItems(element)
+//     for(let i = 0; i < arr.length; i++){
+//         if(Array.isArray(i)){
+//            return printItems(i - 1)
 //         }else{
-//              element
+//             return i
 //         }
-//     });
+//     }
+   
 // }
 
 // printItems([ 1, 2,
@@ -55,8 +56,8 @@ console.log(printEveryOther(10, 0))
 
 
  function countdown(number) { 
-    if(number === 1){
-        return 1
+    if(number === 0){
+        return;
     }
     console.log(number);
     countdown(number - 1); 
