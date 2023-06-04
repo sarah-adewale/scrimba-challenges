@@ -3,14 +3,15 @@
 function printEveryOther(high, low){
     //base case
     if(low > high){
-        low
+       return low
+    }else{
+        return printEveryOther(low + 2, high)
     }
 
-    printEveryOther(low += 2, high)
+   
 }
 
-printEveryOther(10, 0)
-// console.log(printEveryOther(10, 0))
+console.log(printEveryOther(10, 0))
 
 // here is an array containing both numbers as well as other arrays, which in turn contain numbers and arrays:
 
