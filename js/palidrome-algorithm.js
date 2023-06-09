@@ -7,8 +7,6 @@ function palindromeChecker(str){
         if(str[leftIndex] !== str[rightIndex]){
             return false
         }
-        leftIndex++
-        rightIndex--
     }
     return true
    
