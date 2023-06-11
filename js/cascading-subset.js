@@ -18,9 +18,7 @@ function eachCons(arr, n){
     }
      //return the result
     return result
-    
-    
-   
+
 }
 
 console.log(eachCons([1,2,3,4], 2), [[1,2], [2,3], [3,4]])
