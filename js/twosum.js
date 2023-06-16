@@ -25,18 +25,40 @@
 // }
 
 function twoSum(num, sum){
-  let result = []
-  let cache = {}
+  // let result = []
+  // let cache = {}
 
-  for(const num1 of num){
-    let num2 = sum - num
+  // for(const num1 of num){
+  //   let num2 = sum - num
 
-    if(!cache[num2]){
-      cache[num1] = true
+  //   if(!cache[num2]){
+  //     cache[num1] = true
 
+  //   }
+  //   result.push([num1, num2])
+  // }
+
+  let returnedArray = []
+  
+  for(let i = 0; i <= num.length; i++){
+    for(let j = 0; j <= num.length; j++){
+      if(num[i] + num[j] === sum){
+        returnedArray.push([num[j],num[i]])
+      }
     }
-    result.push([num1, num2])
   }
+
+  let cache = {}
+  let result = []
+  for(const char of returnedArray){
+    if(!cache[char]){
+      cache[char] = 1
+      result.push(char)
+    }
+  }
+
+
+  return result
 }
 
 console.log(twoSum([1, 2, 2, 3, 4], 4), [[2, 2], [3, 1]])
