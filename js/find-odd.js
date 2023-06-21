@@ -15,8 +15,6 @@
 
 function findOdd(arr){
     let hash = {}
-    // let objValues = []
-    // let propsArray = []
     let newArr = arr.slice()
    let result = 0
    
@@ -24,7 +22,6 @@ function findOdd(arr){
     for(const char of newArr){
         if(!hash[char]){
             hash[char] = 1
-          
         }else{
             hash[char]++
         }
@@ -37,10 +34,26 @@ function findOdd(arr){
     }
     
     return result
-    // console.log(propsArray)
-    // return propsArray[objValues(result)]
-    // return result
 }
+
+function findOdd(A) {
+//happy coding!
+let count = 0
+let last;
+A.sort((a,b) => a - b)
+for(let i = 0; i < A.length; i++){
+if(A[i] === last){
+count++
+continue;
+}if(count % 2){
+return last
+}
+last = A[i];
+count = 1
+}
+return last
+}
+
 
 console.log(findOdd([1,2,2,3,3,3,4,3,3,3,2,2,1]), 4)
 console.log(findOdd([0,1,0,1,0, 0, 0]), 0)
