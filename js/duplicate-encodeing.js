@@ -14,19 +14,25 @@
 
 
 function duplicateEcoding(str){
-   let newString = str.split('')
+   let newString = str.toLowerCase().split('')
     let cache = {}
     let result = ''
-
     for(const char of newString){
         if(!cache[char]){
-            cache[char] = '('
-            result += cache[char]
+            cache[char] = 1
         }else{
-            cache[char] = ')'
-            result += cache[char]
+            cache[char]++
         }
     }
+
+    for(const val of newString){
+        if(cache[val] > 1){
+            result += ')'
+        }else{
+            result += '('
+        }
+    }
+
     return result
 }
 
