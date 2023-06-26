@@ -21,19 +21,24 @@ class Stack {
   }
 }
 
-function impStack(arr){
-    let stack = []
-    let result = ''
-    for(let i = 0; i <= arr.length; i++){
-        stack.push(arr[i])
-    }
+function reverseString(str) {
+  const stack = new Stack();
+  let reversedString = '';
 
-
-    while (!stack.isEmpty()) {
-    result += stack.pop();
+  // Push each character of the string onto the stack
+  for (let i = 0; i < str.length; i++) {
+    stack.push(str.charAt(i));
   }
-    return result
+
+  // Pop each character from the stack to construct the reversed string
+  while (!stack.isEmpty()) {
+    reversedString += stack.pop();
+  }
+
+  return reversedString;
 }
 
-console.log(impStack(["abcde"]))
+const input = "abcde";
+const reversed = reverseString(input);
+console.log(reversed); // Output: "edcba"
 

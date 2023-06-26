@@ -6,10 +6,11 @@ function palindromeChecker(str){
     for(let i = 0; i < str.length/2; i++){
         if(str[leftIndex] !== str[rightIndex]){
             return false
-        }else{
-            return true
         }
+        leftIndex++
+        rightIndex--
     }
+    return true
    
 }
 
