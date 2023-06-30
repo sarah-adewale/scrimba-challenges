@@ -6,7 +6,7 @@ function fibonacci(n, memo={}){
     }
 
     if(!memo[n]){
-        memo[n] = fibonacci(n - 2) + fibonacci(n - 1)
+        memo[n] = fibonacci(n - 2, memo) + fibonacci(n - 1, memo)
     }
     return memo[n]
 }
