@@ -5,11 +5,13 @@ function count_x(string) {
         return 0
     }
 
-  if (string[0] === "x") {
-    return 1 + count_x(string.slice(1));
-  } else {
-    return count_x(string.slice(1));
-  }
+    let result = count_x(string.slice(1))
+
+    if (string[0] === "x") {
+      return 1 + result;
+    } else {
+      return result;
+    }
 }
 
 
