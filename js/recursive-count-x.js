@@ -6,7 +6,6 @@ function count_x(string) {
     }
 
     let result = count_x(string.slice(1))
-
     if (string[0] === "x") {
       return 1 + result;
     } else {
