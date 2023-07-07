@@ -41,43 +41,69 @@
 // There are no repeated elements on moves.
 // moves follow the rules of tic tac toe.
 
+
 const tictactoe = (moves) => {
-  const grid = [['', '', ''], ['', '', ''], ['', '', '']];
+    // create a 2D grid filled with an empty string to represent the size of the board
+  const grid = new Array(3).fill(null).map(() => new Array(3).fill(''));
+//   create a loop thru the length of the moves. 
+  for (let i = 0; i < moves.length; i++) {
+    // inside the loop create a row and col variable using destructuring method and assign
+// it each individual move.
+    const [row, col] = moves[i];
+    // create a player variable to represent each player. assign even to player A and odd to player B
+    const player = i % 2 === 0 ? 'A' : 'B';
+    // save the players mark on the grid
+    grid[row][col] = player;
+    // checks it theres a win. if the checkWin function is true, return the winning player
+    if (checkWin(grid, player))
+      return player;
+  }
+//   checks if theres a draw. if the grid is full, it means all player has played and there was a draw and the game has ended
+  if (moves.length === 9)
+    return "Draw";
 
-  let currentPlayer = 'A';
+    // if all the above is false, return pending to indicate the game is still ongoing
+  return "Pending";
+};
 
-  for (const move of moves) {
-    const [row, col] = move;
-    grid[row][col] = currentPlayer;
-
-    if (checkWin(grid, row, col, currentPlayer)) {
-      return currentPlayer;
-    }
-
-    currentPlayer = currentPlayer === 'A' ? 'B' : 'A';
+const checkWin = (grid, player) => {
+    // initialize n as the size of the grid
+    let n = grid.length
+  // Check rows win
+//   create a loop thru the rows up to the size of the grid
+  for (let row = 0; row < n; row++) {
+    // if the first row is filled and is equal to the player, and if the second row is filled and equal to the player and it the 
+    // third row is filled and equal to the player, return true
+    if (grid[row][0] === player && grid[row][1] === player && grid[row][2] === player)
+      return true;
   }
 
-  return moves.length === 9 ? 'Draw' : 'Pending';
+  // Check columns
+//   create a loop thru the length of the column
+  for (let col = 0; col < n; col++) {
+    // if the first column on the grid is equal to the player, and the second column on the grid is equal to the player and the 
+    // third coloumn on the grid is equal to the player, return true
+    if (grid[0][col] === player && grid[1][col] === player && grid[2][col] === player)
+      return true;
+  }
+
+  // Check diagonals
+//   conditional to check top-left to bottom right. if the first cell at the oth index is equal to the player, and the 2nd cell at 
+// index 1 is equal to the player and the 3rd cell at index 2 is equal to the player. return true
+  if (grid[0][0] === player && grid[1][1] === player && grid[2][2] === player)
+    return true;
+
+    // check anti-diagonals
+//   conditional to check top-right to bottom left. if the first cell at index 2 is equal to the player and the 2nd cell at index 1 is 
+// equal to the player and the third cell at 0th row index is equal to the player, return true
+  if (grid[0][2] === player && grid[1][1] === player && grid[2][0] === player)
+    return true;
+// else return false
+  return false;
 };
-
-const checkWin = (grid, row, col, player) => {
-  const rowStr = grid[row].join('');
-  const colStr = grid.map((row) => row[col]).join('');
-  const diagonalStr1 = grid.map((row, i) => row[i]).join('');
-  const diagonalStr2 = grid.map((row, i) => row[2 - i]).join('');
-
-  const winStr = player.repeat(3);
-
-  return (
-    rowStr === winStr ||
-    colStr === winStr ||
-    diagonalStr1 === winStr ||
-    diagonalStr2 === winStr
-  );
-};
-
 
 
 console.log(tictactoe([[0,0],[2,0],[1,1],[2,1],[2,2]])); // Output: "A"
 console.log(tictactoe([[0,0],[1,1],[0,1],[0,2],[1,0],[2,0]])); // Output: "B"
+console.log(tictactoe([[0,0],[1,1],[2,0],[1,0],[1,2],[2,1],[0,1],[0,2],[2,2]])); // Output: "Draw"
 console.log(tictactoe([[0,0],[1,1],[2,0],[1,0],[1,2],[2,1],[0,1],[0,2],[2,2]])); // Output: "Draw"
