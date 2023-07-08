@@ -1,4 +1,5 @@
-// Given a Tic-Tac-Toe board as a string array board, return true if and only if it is possible to reach this board position during the course of a valid tic-tac-toe game.
+// Given a Tic-Tac-Toe board as a string array board, return true if and only if it is possible to reach this board position during 
+// the course of a valid tic-tac-toe game.
 
 // The board is a 3 x 3 array that consists of characters ' ', 'X', and 'O'. The ' ' character represents an empty square.
 
@@ -74,40 +75,38 @@ const validTicTacToe = (board) => {
 
 // Helper function to check if a player has won
 function isWinning(board, player) {
-  // Check rows
-  for (let i = 0; i < 3; i++) {
-    if (
-      board[i][0] === player &&
-      board[i][1] === player &&
-      board[i][2] === player
-    ) {
+  // initialize n as the size of the board
+    let n = board.length
+  // Check rows win
+//   create a loop thru the rows up to the size of the board
+  for (let row = 0; row < n; row++) {
+    // if the first row is filled and is equal to the player, and if the second row is filled and equal to the player and it the 
+    // third row is filled and equal to the player, return true
+    if (board[row][0] === player && board[row][1] === player && board[row][2] === player)
       return true;
-    }
   }
 
   // Check columns
-  for (let j = 0; j < 3; j++) {
-    if (
-      board[0][j] === player &&
-      board[1][j] === player &&
-      board[2][j] === player
-    ) {
+//   create a loop thru the length of the column
+  for (let col = 0; col < n; col++) {
+    // if the first column on the board is equal to the player, and the second column on the board is equal to the player and the 
+    // third coloumn on the board is equal to the player, return true
+    if (board[0][col] === player && board[1][col] === player && board[2][col] === player)
       return true;
-    }
   }
 
   // Check diagonals
-  if (
-    (board[0][0] === player &&
-      board[1][1] === player &&
-      board[2][2] === player) ||
-    (board[0][2] === player &&
-      board[1][1] === player &&
-      board[2][0] === player)
-  ) {
+//   conditional to check top-left to bottom right. if the first cell at the oth index is equal to the player, and the 2nd cell at 
+// index 1 is equal to the player and the 3rd cell at index 2 is equal to the player. return true
+  if (board[0][0] === player && board[1][1] === player && board[2][2] === player)
     return true;
-  }
 
+    // check anti-diagonals
+//   conditional to check top-right to bottom left. if the first cell at index 2 is equal to the player and the 2nd cell at index 1 is 
+// equal to the player and the third cell at 0th row index is equal to the player, return true
+  if (board[0][2] === player && board[1][1] === player && board[2][0] === player)
+    return true;
+// else return false
   return false;
 }
 
