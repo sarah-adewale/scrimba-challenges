@@ -228,7 +228,7 @@ function ticTacToe(n) {
 }
 
 // Usage:
-const game = ticTacToe(3);
+// const game = ticTacToe(3);
 console.log(game.move(0, 0, 1));
 console.log(game.move(0, 0, 0));
 console.log(game.move(0, 0, 1)); // 0
