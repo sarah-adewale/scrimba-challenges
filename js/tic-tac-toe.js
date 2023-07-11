@@ -70,7 +70,7 @@ const validTicTacToe = (board) => {
     return false;
   }
 
-  return true;
+  return {x: xWins, o: oWins, invalid: invalidBoards }
 };
 
 // Helper function to check if a player has won
