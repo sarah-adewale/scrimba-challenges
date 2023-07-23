@@ -29,6 +29,10 @@ function mango(quantity,  price){
     return totalMangoes
 }
 
+function mango(quantity, price){
+  return price * (quantity - Math.floor(quantity / 3));
+}
+
 // function mango(quantity, price_per_mango) {
 //   // Calculate the number of mangoes you have to pay for (full price)
 //   const paid_mangoes = Math.floor(quantity / 3) * 2;
