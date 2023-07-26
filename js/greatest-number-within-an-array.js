@@ -40,6 +40,7 @@
 //     return currentMaxVal
 // }
 
+
 function greatestNum(array){
     let sorted = array.sort((a, b) => a < b ? -1 : 1)
     return sorted[array.length - 1]
