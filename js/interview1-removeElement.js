@@ -59,16 +59,16 @@ const removeElement = (nums, val) => {
     }
     return removedVal
 
-    // let i = 0;
-    // let j = 0;
-    // while (i < nums.length) {
-    //     if (nums[i] !== val) {
-    //         nums[j] = nums[i];
-    //         j++;
-    //          console.log(j)
-    //     }
-    //     i++;
-    // }
+    let i = 0;
+    let j = 0;
+    while (i < nums.length) {
+        if (nums[i] !== val) {
+            nums[j] = nums[i];
+            j++;
+             console.log(j)
+        }
+        i++;
+    }
     
     // return j;
     // check for the val in num, if its there, remove.
