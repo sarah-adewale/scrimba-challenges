@@ -50,20 +50,24 @@
 //
 
 const removeDuplicates = (nums) => {
-    if (nums.length === 0) {
-        return 0; // If the array is empty, there are no unique elements.
+    // check if the array is empty
+    if(nums.length === 0){
+        return 0
     }
-
-    let uniqueCount = 0; // At least the first element is unique.
-    for (let i = 0; i < nums.length; i++) {
-        if (nums[i] !== nums[i + 1]) {
-            nums[uniqueCount] = nums[i]; // Move the unique element to the front.
-            uniqueCount++;
+    let result = 0
+    for(let i = 0; i < nums.length; i++){
+        if(nums[i] !== nums[i + 1]){
+            nums[result] = nums[i]
+            result++
         }
+       
     }
-
-    return uniqueCount;
+     return result
+    // create a loop thru the array to check for unique element
+    // if there is, return 
 };
+
+
 
 console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4]), 5)
 console.log(removeDuplicates([1,1,2]), 2)
