@@ -36,7 +36,7 @@ function classicLinkedList(linkedList){
         console.log(currentNode.data)
         currentNode = currentNode.next_node
     }
-    
+
 }
 
 classicLinkedList(linkedList)
