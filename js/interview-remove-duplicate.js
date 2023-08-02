@@ -1,8 +1,10 @@
-// Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
+// Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element 
+// appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
 
 // Consider the number of unique elements of nums to be k, to get accepted, you need to do the following things:
 
-// Change the array nums such that the first k elements of nums contain the unique elements in the order they were present in nums initially. The remaining elements of nums are not important as well as the size of nums.
+// Change the array nums such that the first k elements of nums contain the unique elements in the order they were present in 
+// nums initially. The remaining elements of nums are not important as well as the size of nums.
 // Return k.
 // Custom Judge:
 
@@ -41,22 +43,27 @@
 // -100 <= nums[i] <= 100
 // nums is sorted in non-decreasing order.
 
+
+// pseudo
+// create a function and add the numbers array as a parameter
+// check it the array is empty
+//
+
 const removeDuplicates = (nums) => {
-    // create a map to store value without duplicate
-    let cache = {}
-    let result = 0
-    for(const num of nums){
-        if(!cache[num]){
-            cache[num] = true
-            result++
+    if (nums.length === 0) {
+        return 0; // If the array is empty, there are no unique elements.
+    }
+
+    let uniqueCount = 0; // At least the first element is unique.
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] !== nums[i + 1]) {
+            nums[uniqueCount] = nums[i]; // Move the unique element to the front.
+            uniqueCount++;
         }
     }
-    // return result
-    console.log(cache)
-    // loop thru the array and store values in map
-    // return value count
 
-}
+    return uniqueCount;
+};
 
 console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4]), 5)
 console.log(removeDuplicates([1,1,2]), 2)

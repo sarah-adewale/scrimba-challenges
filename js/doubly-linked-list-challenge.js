@@ -37,14 +37,14 @@ node_4.next_node = node_5
 node_5.previous_node = node_4
 
 function traverseBackward(doublyLinkedList){
-let currentNode = doublyLinkedList.last_node
+    let currentNode = doublyLinkedList.last_node
 
-while(currentNode){
-    console.log(currentNode.data)
-    currentNode = currentNode.previous_node
-   
+    while(currentNode){
+        console.log(currentNode.data)
+        currentNode = currentNode.previous_node
+    }
 }
-}
+
 
 function traverseForward(doublyLinkedList){
     let currentNode = doublyLinkedList.first_node

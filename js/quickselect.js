@@ -1,3 +1,5 @@
+
+
 function partition(array, leftPointer, rightPointer) {
   // We always choose the right-most element as the pivot.
   // We keep the index of the pivot for later use:
