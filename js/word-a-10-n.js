@@ -25,10 +25,43 @@
 // non-word characters should remain in place
 
 
-function abbreviate(string) {
-  let newString = string.split(' ')
-  
+function abbreviate(s) {
+  function isAlpha(char) {
+    return /[a-zA-Z]/.test(char);
+  }
+
+  function abbreviateWord(word) {
+    if (word.length <= 3) {
+      return word;
+    }
+    return word[0] + (word.length - 2) + word[word.length - 1];
+  }
+
+  let result = "";
+  let currentWord = "";
+
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+    if (isAlpha(char)) {
+      currentWord += char;
+    } else {
+      result += abbreviateWord(currentWord);
+      currentWord = "";
+      result += char;
+    }
+  }
+
+  // Handle the last word if it exists
+  result += abbreviateWord(currentWord);
+
+  return result;
 }
+
+// Test the function
+const inputStr = "elephant-rides are really fun!";
+const outputStr = abbreviate(inputStr);
+// console.log(outputStr);  // Output: "e6t-r3s are r4y fun!"
+
 
 
 console.log(abbreviate('elephant-rides are really fun!'), 'e6t-r3s are r4y fun!')
